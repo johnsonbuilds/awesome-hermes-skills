@@ -9,7 +9,7 @@ Hermes Agent skills are procedural knowledge documents that teach the agent how 
 Add this repository as a skill source:
 
 ```bash
-hermes skills tap add https://github.com/<YOUR_USERNAME>/awesome-hermes-skills
+hermes skills tap add https://github.com/johnsonbuilds/awesome-hermes-skills
 ```
 
 Then search and install any skill:
@@ -22,7 +22,7 @@ hermes skills install wavespeed
 Or install a specific skill directly by URL:
 
 ```bash
-hermes skills install https://raw.githubusercontent.com/<YOUR_USERNAME>/awesome-hermes-skills/main/mlops/wavespeed/SKILL.md
+hermes skills install https://raw.githubusercontent.com/johnsonbuilds/awesome-hermes-skills/main/mlops/wavespeed/SKILL.md
 ```
 
 ## Skills
