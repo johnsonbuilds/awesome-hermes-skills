@@ -1,0 +1,8 @@
+# Ignore editor and OS junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
