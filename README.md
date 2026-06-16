@@ -22,7 +22,7 @@ hermes skills install wavespeed
 Or install a specific skill directly by URL:
 
 ```bash
-hermes skills install https://raw.githubusercontent.com/johnsonbuilds/awesome-hermes-skills/main/mlops/wavespeed/SKILL.md
+hermes skills install https://raw.githubusercontent.com/johnsonbuilds/awesome-hermes-skills/main/creative/wavespeed/SKILL.md
 ```
 
 ## Skills
@@ -34,14 +34,14 @@ Alphabetical order by category, then by name.
 
 | Category | Skill | Description |
 |----------|-------|-------------|
-| mlops | [wavespeed](./mlops/wavespeed/SKILL.md) | Generate or edit AI media (image, video, audio, 3D) via WaveSpeed CLI |
+| creative | [wavespeed](./creative/wavespeed/SKILL.md) | Generate or edit AI media (image, video, audio, 3D) via WaveSpeed CLI |
 
 ## Repository Structure
 
 ```
 awesome-hermes-skills/
 ├── README.md
-├── mlops/
+├── creative/
 │   └── wavespeed/
 │       └── SKILL.md
 └── ... (more categories & skills)
