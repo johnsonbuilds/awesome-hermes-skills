@@ -115,9 +115,17 @@ The npm package name is **`@wavespeed/cli`**, not `wavespeed`. If global install
 
 ## Auth
 
-`wavespeed status` shows whether the user is signed in. If not, ask them to run `wavespeed login` (opens https://wavespeed.ai/accesskey). Never ask the user to paste an API key into the chat — the CLI handles it.
+`wavespeed status` shows whether the user is signed in. If not:
 
-**If the user pastes a key anyway**: save it with `--api-key`:
+**Get your API key** at **[https://wavespeed.ai/accesskey](https://wavespeed.ai/accesskey)** — log in with your WaveSpeed account and copy the key from that page.
+
+Then run `wavespeed login` to authenticate:
+
+```bash
+wavespeed login                    # opens browser to https://wavespeed.ai/accesskey
+```
+
+**If the user pastes a key into chat manually** (e.g. `wsk_live_XXXXXX`), save it with `--api-key`:
 
 ```bash
 wavespeed login --api-key "wsk_live_XXXXXX"
