@@ -27,7 +27,7 @@ wavespeed run google/nano-banana-2/text-to-image -h
 
 ### 3. CONFIRM with the user before running
 
-Present the planned model, prompt, and any key parameters (e.g. aspect ratio, duration, input image URL) to the user in a clear summary. Ask explicitly: "Shall I proceed?" Wait for their go-ahead before executing.
+Present the planned model, prompt, and any key parameters (e.g. aspect ratio, resolution, duration, input image URL) to the user in a clear summary. Ask explicitly: "Shall I proceed?" Wait for their go-ahead before executing.
 
 ### 4. RUN it — always pass --json so you can read the result
 
@@ -38,6 +38,8 @@ wavespeed run google/nano-banana-2/text-to-image \
 ```
 
 `run --json` returns `{ model, prompt, outputs: [url, ...], saved: [path, ...], elapsed_ms, raw }`. Use the URL when the user wants a link. Add `--download` if they need bytes on disk.
+
+> **Resolution reminder:** If the user didn't specify an image resolution or video quality, apply the defaults from the [Resolution defaults](#resolution-defaults) section — don't ask unless it matters to their use case.
 
 ## Recommended defaults
 
@@ -56,6 +58,19 @@ wavespeed run google/nano-banana-2/text-to-image \
 **Completion time varies dramatically by model** — always check expected duration. Nano Banana ~23s, Seedream ~28s, GPT Image 2 ~145s. Use background mode for slow models.
 
 Browse alternatives with `wavespeed models <query>`.
+
+## Resolution defaults
+
+When the user doesn't specify a resolution, apply these sensible defaults:
+
+| Use case | Default | How to pass it |
+|---|---|---|
+| Text → image / 文生图 | **1K** (1024×1024 or closest) | `-i aspect_ratio="1:1"` or `-i size="1024x1024"` (check `-h` for which param the model uses) |
+| Image edit | **1K** (same as above) | Same — some models use `aspect_ratio`, others `size`. Always `-h` first. |
+| Text → video | **480p** (854×480) | `-i width=854 -i height=480` or `-i resolution="480p"` (check `-h`) |
+| Image → video | **480p** (854×480) | Same — some models accept `width`/`height`, others a single `resolution` string |
+
+> **Resolution tiers (common):** 1K = 1024×1024 / 1024×768 / 768×1344 (depends on aspect ratio), 2K = 2048×2048, 4K = 4096×4096. For video: 480p = 854×480, 720p = 1280×720, 1080p = 1920×1080. Always verify the exact parameter names with `-h`.
 
 ## Choosing the right edit model
 
