@@ -35,6 +35,7 @@ Alphabetical order by category, then by name.
 | Category | Skill | Description |
 |----------|-------|-------------|
 | creative | [wavespeed](./creative/wavespeed/SKILL.md) | Generate or edit AI media (image, video, audio, 3D) via WaveSpeed CLI |
+| social | [hermes-tweet](./social/hermes-tweet/SKILL.md) | X/Twitter research, monitoring, account reads, and approval-gated social actions for Hermes Agent |
 
 ## Repository Structure
 
@@ -43,6 +44,9 @@ awesome-hermes-skills/
 ├── README.md
 ├── creative/
 │   └── wavespeed/
+│       └── SKILL.md
+├── social/
+│   └── hermes-tweet/
 │       └── SKILL.md
 └── ... (more categories & skills)
 ```
