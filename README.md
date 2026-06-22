@@ -35,6 +35,7 @@ Alphabetical order by category, then by name.
 | Category | Skill | Description |
 |----------|-------|-------------|
 | creative | [wavespeed](./creative/wavespeed/SKILL.md) | Generate or edit AI media (image, video, audio, 3D) via WaveSpeed CLI |
+| governance | [skill-health-check](./governance/skill-health-check/SKILL.md) | Analyze Hermes skills health, detect duplicates, and evaluate governance issues using skill-inspector |
 | social | [hermes-tweet](./social/hermes-tweet/SKILL.md) | X/Twitter research, monitoring, account reads, and approval-gated social actions for Hermes Agent |
 
 ## Repository Structure
@@ -44,6 +45,9 @@ awesome-hermes-skills/
 ├── README.md
 ├── creative/
 │   └── wavespeed/
+│       └── SKILL.md
+├── governance/
+│   └── skill-health-check/
 │       └── SKILL.md
 ├── social/
 │   └── hermes-tweet/
@@ -81,4 +85,4 @@ Then write the body in Markdown with clear sections:
 
 ## License
 
-MIT
+Apache License 2.0
