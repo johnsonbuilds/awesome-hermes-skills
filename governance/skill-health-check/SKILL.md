@@ -1,16 +1,22 @@
 ---
 name: skill-health-check
-description: Analyze the current Hermes skills using skill-inspector. Use when users want to inspect, audit, review, evaluate, troubleshoot, or understand their installed skills, skill packages, health scores, duplicates, complexity, governance issues, recommendations, or overall skill library organization.
+description: Use when users ask to analyze skills, audit skills, check skill health, generate skill reports, inspect installed skills, review skill packages, find duplicate skills, identify unused skills, evaluate skill quality, or run Skill Inspector.
 ---
 
 ## Prerequisites
 
-Before running any commands, ensure ``skill-inspector`` is installed:
+Before running any commands, ensure `skill-inspector` is installed.
+
+To install or upgrade to the latest version:
 
 ```bash
-git clone https://github.com/johnsonbuilds/skill-inspector.git
-cd skill-inspector
-pip install -e .
+pip install --upgrade git+https://github.com/johnsonbuilds/skill-inspector.git
+```
+
+To install/upgrade to a specific version or tag (e.g., `v1.0.0`):
+
+```bash
+pip install --upgrade git+https://github.com/johnsonbuilds/skill-inspector.git@v1.0.0
 ```
 
 ---
@@ -19,9 +25,12 @@ pip install -e .
 
 When asked to analyze skills, follow these steps:
 
-1. **Install skill-inspector** (if not already installed)
+1. **Install or upgrade skill-inspector** (if not already installed or to ensure the latest version is used):
+   ```bash
+   pip install --upgrade git+https://github.com/johnsonbuilds/skill-inspector.git
+   ```
 2. **Run the desired command** (`scan-packages` or `health`)
-3. **Summarize the generated report** and send the original report to the user.
+3. **Summarize the generated report** and send the original report file to the user.
 ---
 
 ## Usage
@@ -32,7 +41,7 @@ skill-inspector <command> [options]
 
 Available commands:
 
-### scan-packages
+### scan-packages(default)
 
 Scan Hermes skills (package-aware) and generate ``report.md``.
 
