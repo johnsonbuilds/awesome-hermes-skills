@@ -44,6 +44,7 @@ Alphabetical order by category, then by name.
 | mlops | [llmfit](./mlops/llmfit/SKILL.md) | CLI tool to find which LLM models run on your local hardware (GPU/CPU/RAM detection) |
 | mlops | [token-compression](./mlops/token-compression/SKILL.md) | Compress AI Agent tool outputs, logs, and RAG content — reduce token usage by 20-95% |
 | productivity | [i-have-adhd](./productivity/i-have-adhd/SKILL.md) | ADHD-friendly output formatting — 10 rules to make AI responses actionable and scannable |
+| productivity | [worklittle-jobs-mcp](./productivity/worklittle-jobs-mcp/SKILL.md) | Worklittle Jobs MCP — search 4M+ jobs with visa/salary/distance filters, swipe to apply, create resumes & cover letters |
 
 ## Repository Structure
 
@@ -73,7 +74,9 @@ awesome-hermes-skills/
 │   └── token-compression/
 │       └── SKILL.md
 └── productivity/
-    └── i-have-adhd/
+    ├── i-have-adhd/
+    │   └── SKILL.md
+    └── worklittle-jobs-mcp/
         └── SKILL.md
 ```
 
