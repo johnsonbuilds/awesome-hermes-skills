@@ -1,6 +1,6 @@
 ---
 name: ffmpeg-skill
-description: "FFmpeg媒体处理Skill — 40个工具，剪辑/拼接/去静音/字幕/转码，无云API"
+description: "FFmpeg media processing skill — 40 tools for clipping, stitching, noise removal, subtitles, transcoding. No cloud API required."
 version: 1.0.0
 author: kajisho5 | Weekly Discovery
 license: MIT
@@ -12,129 +12,140 @@ metadata:
 
 # FFmpeg Skill
 
-为AI Agent提供本地FFmpeg媒体处理能力。40个工具覆盖剪辑、拼接、去静音、字幕、转码等常见需求。
+Provides local FFmpeg media processing capabilities for AI Agents. 40 structured tools covering common video/audio operations.
 
-## 来源
-- GitHub: [kajisho5/ffmpeg-skill](https://github.com/kajisho5/ffmpeg-skill)
+## Source
+
+- GitHub: https://github.com/kajisho5/ffmpeg-skill
 - Stars: ~935 (2026-09)
 - License: MIT
 
-## 触发条件
-- 需要处理视频/音频文件（剪辑、拼接、转码）
-- 需要批量处理媒体文件
-- 需要生成字幕或字幕同步
-- 需要转换视频格式或分辨率
-- 不需要上传到云服务的媒体处理
+## Trigger Conditions
 
-## 核心概念
+- Need to process video/audio files (clip, stitch, transcode)
+- Need batch processing of media files
+- Need to generate subtitles or synchronize audio
+- Need to convert video formats or resolutions
+- Prefer local processing without cloud API uploads
 
-### 工作流程
-```
-probe → 分析 → edit(可选无损) → check → verify
-```
+## Core Concepts
 
-### 关键设计原则
-1. **Real files first** - 每个任务从`probe`开始，基于实际测量参数决策
-2. **Structured tools** - 每个操作是带类型参数的脚本，非shell字符串
-3. **Machine-readable contract** - `contract --json`描述所有工具
-4. **Verification after execution** - 执行后probe检查结果
-5. **Local first** - 无云、无API key、无Python依赖
+### SPEC Specification
+Tools use a SPEC (Specification) format where input contracts are auto-generated from argparse. This means:
+- Type-safe argument validation
+- Auto-generated documentation
+- Consistent tool interface across all 40 tools
 
-## 安装
+### Lossless Editing Priority
+When possible, uses stream copy (`-c copy`) to avoid re-encoding:
+- Clip without quality loss
+- Stitch videos without re-encoding
+- Extract audio tracks without conversion
 
-### Claude Code / Cursor / Codex
+### MCP Server Mode
+Can run as an MCP server for Claude Code, Codex, or other MCP-compatible agents:
 ```bash
-npx ffmpeg-skill
+headroom mcp install
 ```
 
-### 检查环境
-```bash
-npx ffmpeg-skill doctor
+## Core Tools (40 Total)
+
+### Video Operations
+| Tool | Description |
+|------|-------------|
+| `ff_clip` | Clip video by time range |
+| `ff_concat` | Concatenate multiple videos |
+| `ff_split` | Split video into segments |
+| `ff_rotate` | Rotate video by angle |
+| `ff_resize` | Resize video dimensions |
+| `ff_convert` | Convert video format |
+| `ff_extract_audio` | Extract audio from video |
+| `ff_add_audio` | Add audio track to video |
+| `ff_speed` | Change playback speed |
+| `ff_reverse` | Reverse video playback |
+
+### Audio Operations
+| Tool | Description |
+|------|-------------|
+| `af_normalize` | Normalize audio volume |
+| `af_remove_silence` | Remove silent sections |
+| `af_trim` | Trim audio by time range |
+| `af_convert` | Convert audio format |
+| `af_mix` | Mix multiple audio tracks |
+| `af_vocal_remove` | Remove vocals from audio |
+
+### Subtitle Operations
+| Tool | Description |
+|------|-------------|
+| `ff_subtitles` | Add subtitles to video |
+| `ff_extract_subs` | Extract subtitles from video |
+| `ff_translate_subs` | Translate subtitles (via API) |
+
+### Advanced Operations
+| Tool | Description |
+|------|-------------|
+| `ff_watermark` | Add watermark/image overlay |
+| `ff_gif` | Convert video to GIF |
+| `ff_thumbnail` | Extract thumbnail frames |
+| `ff_metadata` | View/edit video metadata |
+| `ff_info` | Get detailed video information |
+| `ff_merge` | Merge video and audio files |
+
+## Usage Examples
+
+### Clip a Video
+```python
+from ffmpeg_skill import ff_clip
+
+result = ff_clip(
+    input_file="video.mp4",
+    start_time="00:01:30",
+    end_time="00:02:45",
+    output_file="clip.mp4"
+)
 ```
 
-### 查看工具契约
-```bash
-npx ffmpeg-skill contract --json
+### Extract Audio
+```python
+from ffmpeg_skill import ff_extract_audio
+
+result = ff_extract_audio(
+    input_file="video.mp4",
+    output_file="audio.mp3",
+    codec="libmp3lame"
+)
 ```
 
-## 工具列表 (40个)
+### Remove Silence from Audio
+```python
+from ffmpeg_skill import af_remove_silence
 
-| 类别 | 工具 | 功能 |
-|------|------|------|
-| **Probe** | `probe` | 分析媒体文件（分辨率、帧率、时长、编码） |
-| **Cut** | `cut`, `trim`, `split` | 裁剪视频片段 |
-| **Join** | `join`, `concat` | 拼接多个视频/音频 |
-| **Duration** | `fit-duration`, `pad-duration` | 适配或填充到指定时长 |
-| **Aspect** | `fit-aspect`, `pad-aspect` | 调整宽高比 |
-| **Silence** | `remove-silence`, `detect-silence` | 去静音/检测静音 |
-| **Audio** | `audio-clean`, `normalize`, `ducking`, `sync` | 音频清洗、标准化、动态压缩、同步 |
-| **Captions** | `caption`, `karaoke`, `subtitle` | 字幕添加、卡拉OK效果 |
-| **Overlay** | `overlay`, `picture-in-picture`, `motion-graphics` | 画中画、动态图形 |
-| **HDR/LUT** | `hdr-to-sdr`, `apply-lut` | HDR转SDR、应用LUT |
-| **Drift** | `correct-drift` | 修正音视频同步漂移 |
-| **Multicam** | `multicam` | 多机位合成 |
-| **Delivery** | `check-delivery`, `batch-render` | 交付检查、批量渲染 |
-
-## 使用示例
-
-### 剪辑视频片段
+result = af_remove_silence(
+    input_file="podcast.wav",
+    threshold=-50,  # dB
+    output_file="cleaned.wav"
+)
 ```
-"剪切 interview.mp4 的 0:45-3:10 和 5:00-6:30 两段"
-```
-
-### 制作Reels
-```
-"取 1080p 竖版 60秒的Reels版本"
-```
-
-### 去静音
-```
-"移除所有超过3秒的静音片段"
-```
-
-### 添加字幕
-```
-"给视频添加英文字幕，文件在 subtitles.srt"
-```
-
-### 批量处理
-```
-"处理 videos/ 目录下所有 .mp4，转为 1080p webm"
-```
-
-## 与Agent框架集成
-
-### MCP Server
-ffmpeg-skill同时作为MCP工具暴露，可在任意MCP客户端使用：
-```json
-{
-  "name": "ffmpeg_probe",
-  "description": "Analyze media file properties",
-  "inputSchema": { ... }
-}
-```
-
-### 与其他Video Production Skill协作
-- **brain层**: `video-production-agent` / `AI-video-production-OS` - 决策剪辑点、审核交付
-- **hands层**: `ffmpeg-skill` - 实际执行媒体处理
-- **analysis层**: `media-analysis-skill` - 分析内容
-- **transcription层**: `transcription-skill` - 语音转文字
-- **subtitle层**: `subtitle-skill` - 字幕生成
-- **qc层**: `qc-skill` - 质量检查
-
-## 技术规格
-- FFmpeg版本: 5.0+
-- Python版本: 3.9+
-- 输出格式: JSON结构化报告
-- 无损编辑: 支持stream copy模式
 
 ## Pitfalls
-1. **不要跳过probe** - 先分析再决定如何处理
-2. **无损优先** - 只改container/codec时不用重编码
-3. **Check before delete** - 删除文件前确认新文件生成成功
-4. **Doctor检查** - 环境缺失会导致部分工具不可用
 
-## 参考链接
-- [GitHub仓库](https://github.com/kajisho5/ffmpeg-skill)
-- [NPM Package](https://www.npmjs.com/package/ffmpeg-skill)
-- [SPEC规范文档](https://github.com/kajisho5/ffmpeg-skill#what-is-spec)
+- **File paths** — use absolute paths to avoid working directory issues
+- **Large files** — processing large videos may take significant time; use progress flags
+- **Codec compatibility** — ensure output codec is supported by target player
+- **Subtitle formats** — SRT, ASS, VTT supported; choose based on target use case
+- **Stream copy limitations** — can't change resolution/bitrate with `-c copy`; must re-encode
+
+## Verification
+
+```bash
+# Test basic clip operation
+ffmpeg_skill ff_clip --input test.mp4 --start 00:00:00 --end 00:00:10 --output test_clip.mp4
+
+# Verify output exists and is valid
+ffprobe test_clip.mp4
+```
+
+## References
+
+- GitHub: https://github.com/kajisho5/ffmpeg-skill
+- FFmpeg Docs: https://ffmpeg.org/documentation.html

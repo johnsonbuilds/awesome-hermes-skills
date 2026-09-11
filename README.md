@@ -34,12 +34,16 @@ Alphabetical order by category, then by name.
 
 | Category | Skill | Description |
 |----------|-------|-------------|
-| creative | [anything2explainer](./creative/anything2explainer/SKILL.md) | 将任何主题转化为动画解说视频（Remotion+TTS全链路） |
-| creative | [handraw-style](./creative/handraw-style/SKILL.md) | 261种手绘风格提示词库，中英双语 |
+| creative | [anything2explainer](./creative/anything2explainer/SKILL.md) | Turn any topic into animated explainer videos (Remotion + TTS full pipeline) |
+| creative | [gods-eye-view](./creative/gods-eye-view/SKILL.md) | Browser-based spy satellite simulator using real open-source spatial intelligence data |
+| creative | [handraw-style](./creative/handraw-style/SKILL.md) | 261 hand-drawn style prompt catalog with numbered system for AI image generation |
 | creative | [wavespeed](./creative/wavespeed/SKILL.md) | Generate or edit AI media (image, video, audio, 3D) via WaveSpeed CLI |
 | governance | [skill-health-check](./governance/skill-health-check/SKILL.md) | Analyze Hermes skills health, detect duplicates, and evaluate governance issues using skill-inspector |
-| media | [ffmpeg](./media/ffmpeg/SKILL.md) | FFmpeg媒体处理Skill — 40个工具，剪辑/拼接/去静音/字幕/转码 |
-| mlops | [token-compression](./mlops/token-compression/SKILL.md) | 使用 Headroom 压缩AI Agent工具输出、日志和RAG内容，减少20-95% token消耗 |
+| media | [ffmpeg](./media/ffmpeg/SKILL.md) | FFmpeg media processing — 40 tools for clipping, stitching, noise removal, subtitles, transcoding |
+| mlops | [gpustack](./mlops/gpustack/SKILL.md) | GPU cluster manager for AI model serving — deploy vLLM/SGLang/TensorRT-LLM with auto-scaling |
+| mlops | [llmfit](./mlops/llmfit/SKILL.md) | CLI tool to find which LLM models run on your local hardware (GPU/CPU/RAM detection) |
+| mlops | [token-compression](./mlops/token-compression/SKILL.md) | Compress AI Agent tool outputs, logs, and RAG content — reduce token usage by 20-95% |
+| productivity | [i-have-adhd](./productivity/i-have-adhd/SKILL.md) | ADHD-friendly output formatting — 10 rules to make AI responses actionable and scannable |
 
 ## Repository Structure
 
@@ -48,6 +52,8 @@ awesome-hermes-skills/
 ├── README.md
 ├── creative/
 │   ├── anything2explainer/
+│   │   └── SKILL.md
+│   ├── gods-eye-view/
 │   │   └── SKILL.md
 │   ├── handraw-style/
 │   │   └── SKILL.md
@@ -59,8 +65,15 @@ awesome-hermes-skills/
 ├── media/
 │   └── ffmpeg/
 │       └── SKILL.md
-└── mlops/
-    └── token-compression/
+├── mlops/
+│   ├── gpustack/
+│   │   └── SKILL.md
+│   ├── llmfit/
+│   │   └── SKILL.md
+│   └── token-compression/
+│       └── SKILL.md
+└── productivity/
+    └── i-have-adhd/
         └── SKILL.md
 ```
 
