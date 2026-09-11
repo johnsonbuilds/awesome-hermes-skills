@@ -39,6 +39,7 @@ Alphabetical order by category, then by name.
 | creative | [handraw-style](./creative/handraw-style/SKILL.md) | 261 hand-drawn style prompt catalog with numbered system for AI image generation |
 | creative | [wavespeed](./creative/wavespeed/SKILL.md) | Generate or edit AI media (image, video, audio, 3D) via WaveSpeed CLI |
 | governance | [skill-health-check](./governance/skill-health-check/SKILL.md) | Analyze Hermes skills health, detect duplicates, and evaluate governance issues using skill-inspector |
+| governance | [skillspector-scan](./governance/skillspector-scan/SKILL.md) | Scan skills with NVIDIA SkillSpector before committing — detect injection, exfiltration, and other security risks |
 | media | [ffmpeg](./media/ffmpeg/SKILL.md) | FFmpeg media processing — 40 tools for clipping, stitching, noise removal, subtitles, transcoding |
 | mlops | [gpustack](./mlops/gpustack/SKILL.md) | GPU cluster manager for AI model serving — deploy vLLM/SGLang/TensorRT-LLM with auto-scaling |
 | mlops | [llmfit](./mlops/llmfit/SKILL.md) | CLI tool to find which LLM models run on your local hardware (GPU/CPU/RAM detection) |
