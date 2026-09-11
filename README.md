@@ -34,8 +34,12 @@ Alphabetical order by category, then by name.
 
 | Category | Skill | Description |
 |----------|-------|-------------|
+| creative | [anything2explainer](./creative/anything2explainer/SKILL.md) | 将任何主题转化为动画解说视频（Remotion+TTS全链路） |
+| creative | [handraw-style](./creative/handraw-style/SKILL.md) | 261种手绘风格提示词库，中英双语 |
 | creative | [wavespeed](./creative/wavespeed/SKILL.md) | Generate or edit AI media (image, video, audio, 3D) via WaveSpeed CLI |
 | governance | [skill-health-check](./governance/skill-health-check/SKILL.md) | Analyze Hermes skills health, detect duplicates, and evaluate governance issues using skill-inspector |
+| media | [ffmpeg](./media/ffmpeg/SKILL.md) | FFmpeg媒体处理Skill — 40个工具，剪辑/拼接/去静音/字幕/转码 |
+| mlops | [token-compression](./mlops/token-compression/SKILL.md) | 使用 Headroom 压缩AI Agent工具输出、日志和RAG内容，减少20-95% token消耗 |
 
 ## Repository Structure
 
@@ -43,12 +47,21 @@ Alphabetical order by category, then by name.
 awesome-hermes-skills/
 ├── README.md
 ├── creative/
+│   ├── anything2explainer/
+│   │   └── SKILL.md
+│   ├── handraw-style/
+│   │   └── SKILL.md
 │   └── wavespeed/
 │       └── SKILL.md
 ├── governance/
 │   └── skill-health-check/
 │       └── SKILL.md
-└── ... (more categories & skills)
+├── media/
+│   └── ffmpeg/
+│       └── SKILL.md
+└── mlops/
+    └── token-compression/
+        └── SKILL.md
 ```
 
 Skills are organized by category directory, matching the Hermes Agent skills layout convention. Each skill lives in its own subdirectory with a `SKILL.md` file.
